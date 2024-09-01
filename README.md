@@ -1,6 +1,6 @@
 # Makes error reporting in procedural macros nice and easy
 
-[![docs.rs](https://docs.rs/proc-macro-error/badge.svg)](https://docs.rs/proc-macro-error)
+[![docs.rs](https://docs.rs/proc-macro-error2/badge.svg)](https://docs.rs/proc-macro-error2)
 [![unsafe forbidden](https://img.shields.io/badge/unsafe-forbidden-success.svg)](https://github.com/rust-secure-code/safety-dance/)
 
 This crate aims to make error reporting in proc-macros simple and easy to use.
@@ -242,9 +242,9 @@ be dual licensed as above, without any additional terms or conditions.
 [compl_err]: https://doc.rust-lang.org/std/macro.compile_error.html
 [`proc_macro::Diagnostic`]: https://doc.rust-lang.org/proc_macro/struct.Diagnostic.html
 
-[crate::dummy]: https://docs.rs/proc-macro-error/1/proc_macro_error/dummy/index.html
-[crate::multi]: https://docs.rs/proc-macro-error/1/proc_macro_error/multi/index.html
+[crate::dummy]: https://docs.rs/proc-macro-error2/1/proc_macro_error/dummy/index.html
+[crate::multi]: https://docs.rs/proc-macro-error2/1/proc_macro_error/multi/index.html
 
-[`abort_call_site!`]: https://docs.rs/proc-macro-error/1/proc_macro_error/macro.abort_call_site.html
-[`abort!`]: https://docs.rs/proc-macro-error/1/proc_macro_error/macro.abort.html
-[guide]: https://docs.rs/proc-macro-error
+[`abort_call_site!`]: https://docs.rs/proc-macro-error2/1/proc_macro_error/macro.abort_call_site.html
+[`abort!`]: https://docs.rs/proc-macro-error2/1/proc_macro_error/macro.abort.html
+[guide]: https://docs.rs/proc-macro-error2

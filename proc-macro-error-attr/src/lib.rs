@@ -1,5 +1,5 @@
 //! This is `#[proc_macro_error]` attribute to be used with
-//! [`proc-macro-error`](https://docs.rs/proc-macro-error/). There you go.
+//! [`proc-macro-error`](https://docs.rs/proc-macro-error2/). There you go.
 
 use crate::parse::parse_input;
 use crate::parse::Attribute;

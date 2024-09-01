@@ -1,4 +1,4 @@
-//! # proc-macro-error
+//! # proc-macro-error2
 //!
 //! This crate aims to make error reporting in proc-macros simple and easy to use.
 //! Migrate from `panic!`-based errors for as little effort as possible!
@@ -21,7 +21,7 @@
 //!
 //! ```toml
 //! [dependencies]
-//! proc-macro-error = { version = "1", default-features = false }
+//! proc-macro-error2 = { version = "2.0.0-pre.1", default-features = false }
 //! ```
 //!
 //! ***Please note that disabling this feature makes sense only if you don't depend on `syn`
@@ -482,7 +482,7 @@ struct AbortNow;
 fn check_correctness() {
     assert!(
         ENTERED_ENTRY_POINT.with(Cell::get) != 0,
-        "proc-macro-error API cannot be used outside of `entry_point` invocation, \
+        "proc-macro-error2 API cannot be used outside of `entry_point` invocation, \
              perhaps you forgot to annotate your #[proc_macro] function with `#[proc_macro_error]"
     );
 }
