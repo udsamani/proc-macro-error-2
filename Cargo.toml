@@ -34,9 +34,10 @@ test-crate = { path = "./test-crate" }
 syn = { version = "2", features = ["full"] }
 trybuild = { version = "1.0.99", features = ["diff"] }
 
-[build-dependencies]
-version_check = "0.9"
-
 [features]
 default = ["syn-error"]
-syn-error = ["syn"]
+syn-error = ["dep:syn"]
+nightly = []
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(run_ui_tests)'] }

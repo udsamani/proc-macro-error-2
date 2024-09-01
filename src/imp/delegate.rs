@@ -38,7 +38,6 @@ pub(crate) fn emit_diagnostic(diag: Diagnostic) {
             IS_DIRTY.with(|c| c.set(true));
             PLevel::Error
         }
-        _ => unreachable!(),
     };
 
     let mut res = PDiag::spanned(span, level, msg);

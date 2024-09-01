@@ -271,7 +271,7 @@
 //! [`ToTokens`]: https://docs.rs/quote/1.0.3/quote/trait.ToTokens.html
 //!
 
-#![cfg_attr(not(use_fallback), feature(proc_macro_diagnostic))]
+#![cfg_attr(feature = "nightly", feature(proc_macro_diagnostic))]
 #![forbid(unsafe_code)]
 #![allow(clippy::needless_doctest_main)]
 
@@ -295,11 +295,11 @@ mod diagnostic;
 mod macros;
 mod sealed;
 
-#[cfg(use_fallback)]
+#[cfg(not(feature = "nightly"))]
 #[path = "imp/fallback.rs"]
 mod imp;
 
-#[cfg(not(use_fallback))]
+#[cfg(feature = "nightly")]
 #[path = "imp/delegate.rs"]
 mod imp;
 

@@ -81,7 +81,6 @@ fn impl_proc_macro_error(attr: TokenStream2, input: TokenStream2) -> Result<Toke
     Ok(res.into())
 }
 
-#[cfg(not(always_assert_unwind))]
 fn gen_body(block: TokenTree, settings: Settings) -> proc_macro2::TokenStream {
     let is_proc_macro_hack = settings.is_set(ProcMacroHack);
     let closure = if settings.is_set(AssertUnwindSafe) {
@@ -90,17 +89,6 @@ fn gen_body(block: TokenTree, settings: Settings) -> proc_macro2::TokenStream {
         quote!(|| #block)
     };
 
-    quote!( ::proc_macro_error::entry_point(#closure, #is_proc_macro_hack) )
-}
-
-// FIXME:
-// proc_macro::TokenStream does not implement UnwindSafe until 1.37.0.
-// Considering this is the closure's return type the unwind safety check would fail
-// for virtually every closure possible, the check is meaningless.
-#[cfg(always_assert_unwind)]
-fn gen_body(block: TokenTree, settings: Settings) -> proc_macro2::TokenStream {
-    let is_proc_macro_hack = settings.is_set(ProcMacroHack);
-    let closure = quote!(::std::panic::AssertUnwindSafe(|| #block ));
     quote!( ::proc_macro_error::entry_point(#closure, #is_proc_macro_hack) )
 }
 

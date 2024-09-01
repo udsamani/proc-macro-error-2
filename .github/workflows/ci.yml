@@ -14,6 +14,12 @@ jobs:
       - run: rustup toolchain install ${{ matrix.rust-version }}
       - run: cargo +${{ matrix.rust-version }} test --all
 
+  ui-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: RUSTFLAGS='--cfg run_ui_tests' cargo +stable test ui
+
   test-fmt:
     runs-on: ubuntu-latest
     steps:
