@@ -3,7 +3,7 @@ use proc_macro2::{Ident, Span, TokenStream, TokenTree};
 
 macro_rules! decl_settings {
     ($($val:expr => $variant:ident),+ $(,)*) => {
-        #[derive(PartialEq)]
+        #[derive(PartialEq, Clone, Copy)]
         pub(crate) enum Setting {
             $($variant),*
         }
@@ -67,6 +67,6 @@ impl Settings {
     }
 
     pub(crate) fn set(&mut self, setting: Setting) {
-        self.0.push(setting)
+        self.0.push(setting);
     }
 }

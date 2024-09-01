@@ -143,7 +143,7 @@ pub fn emit_notes(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
 #[proc_macro]
 #[proc_macro_error]
 pub fn option_ext(_input: proc_macro::TokenStream) -> proc_macro::TokenStream {
-    let none: Option<Diagnostic> = None;
+    let none: Option<()> = None;
     none.expect_or_abort("Option::expect_or_abort() test");
     quote!().into()
 }

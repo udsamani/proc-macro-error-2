@@ -18,6 +18,7 @@ pub enum Level {
 
 /// Represents a single diagnostic message
 #[derive(Debug)]
+#[must_use = "A diagnostic does nothing unless emitted"]
 pub struct Diagnostic {
     pub(crate) level: Level,
     pub(crate) span_range: SpanRange,
@@ -42,6 +43,7 @@ pub trait DiagnosticExt: Sealed {
     ///
     /// This function is the same as `Diagnostic::span_error` but produces considerably
     /// better error messages for multi-token spans on stable.
+    #[must_use]
     fn span_range_error(self, span_range: SpanRange, msg: String) -> Self;
 
     /// Attach a "help" note to your main message, the note will have it's own span on nightly.
@@ -52,6 +54,7 @@ pub trait DiagnosticExt: Sealed {
     /// # Span
     ///
     /// The span is ignored on stable, the note effectively inherits its parent's (main message) span
+    #[must_use]
     fn span_range_help(self, span_range: SpanRange, msg: String) -> Self;
 
     /// Attach a note to your main message, the note will have it's own span on nightly.
@@ -62,6 +65,7 @@ pub trait DiagnosticExt: Sealed {
     /// # Span
     ///
     /// The span is ignored on stable, the note effectively inherits its parent's (main message) span
+    #[must_use]
     fn span_range_note(self, span_range: SpanRange, msg: String) -> Self;
 }
 
@@ -167,6 +171,7 @@ impl Diagnostic {
     }
 
     /// The message of main warning/error (no notes attached)
+    #[must_use]
     pub fn message(&self) -> &str {
         &self.msg
     }

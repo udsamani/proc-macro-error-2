@@ -126,6 +126,7 @@ thread_local! {
 /// invocations in case you'll emit any errors.
 ///
 /// See [guide](../index.html#guide).
+#[allow(clippy::must_use_candidate)] // Mutates thread local state
 pub fn set_dummy(dummy: TokenStream) -> Option<TokenStream> {
     check_correctness();
     DUMMY_IMPL.with(|old_dummy| old_dummy.replace(Some(dummy)))

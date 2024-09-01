@@ -273,7 +273,6 @@
 
 #![cfg_attr(feature = "nightly", feature(proc_macro_diagnostic))]
 #![forbid(unsafe_code)]
-#![allow(clippy::needless_doctest_main)]
 
 extern crate proc_macro;
 
@@ -304,6 +303,7 @@ mod imp;
 mod imp;
 
 #[derive(Debug, Clone, Copy)]
+#[must_use = "A SpanRange does nothing unless used"]
 pub struct SpanRange {
     pub first: Span,
     pub last: Span,
@@ -349,6 +349,7 @@ impl SpanRange {
     }
 
     /// Collapse the range into single span, preserving as much information as possible.
+    #[must_use]
     pub fn collapse(self) -> Span {
         self.first.join(self.last).unwrap_or(self.first)
     }
@@ -479,12 +480,11 @@ thread_local! {
 struct AbortNow;
 
 fn check_correctness() {
-    if ENTERED_ENTRY_POINT.with(|flag| flag.get()) == 0 {
-        panic!(
-            "proc-macro-error API cannot be used outside of `entry_point` invocation, \
+    assert!(
+        ENTERED_ENTRY_POINT.with(Cell::get) != 0,
+        "proc-macro-error API cannot be used outside of `entry_point` invocation, \
              perhaps you forgot to annotate your #[proc_macro] function with `#[proc_macro_error]"
-        );
-    }
+    );
 }
 
 /// **ALL THE STUFF INSIDE IS NOT PUBLIC API!!!**
@@ -525,11 +525,16 @@ pub mod __export {
     impl<T: ToTokens> ToTokensAsSpanRange for &T {
         fn FIRST_ARG_MUST_EITHER_BE_Span_OR_IMPLEMENT_ToTokens_OR_BE_SpanRange(&self) -> SpanRange {
             let mut ts = self.to_token_stream().into_iter();
-            let first = ts
-                .next()
-                .map(|tt| tt.span())
-                .unwrap_or_else(Span::call_site);
-            let last = ts.last().map(|tt| tt.span()).unwrap_or(first);
+            let first = match ts.next() {
+                Some(t) => t.span(),
+                None => Span::call_site(),
+            };
+
+            let last = match ts.next() {
+                Some(t) => t.span(),
+                None => first,
+            };
+
             SpanRange { first, last }
         }
     }

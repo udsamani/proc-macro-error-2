@@ -39,7 +39,7 @@ fn parse_next_attr(
             res
         }
         other => {
-            let span = other.map_or(Span::call_site(), |tt| tt.span());
+            let span = other.map_or(Span::call_site(), TokenTree::span);
             return Err(Error::new(span, "expected `[`".to_string()));
         }
     };

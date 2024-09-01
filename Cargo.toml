@@ -41,3 +41,7 @@ nightly = []
 
 [lints.rust]
 unexpected_cfgs = { level = "warn", check-cfg = ['cfg(run_ui_tests)'] }
+
+[lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+module_name_repetitions = { level = "allow" }

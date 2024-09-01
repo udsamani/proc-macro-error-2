@@ -7,7 +7,11 @@ use proc_macro::TokenStream;
 use proc_macro2::{Literal, Span, TokenStream as TokenStream2, TokenTree};
 use quote::{quote, quote_spanned};
 
-use crate::settings::{Setting::*, *};
+use crate::settings::{
+    parse_settings,
+    Setting::{AllowNotMacro, AssertUnwindSafe, ProcMacroHack},
+    Settings,
+};
 
 mod parse;
 mod settings;
@@ -71,7 +75,7 @@ fn impl_proc_macro_error(attr: TokenStream2, input: TokenStream2) -> Result<Toke
         ));
     }
 
-    let body = gen_body(body, settings);
+    let body = gen_body(&body, &settings);
 
     let res = quote! {
         #(#attrs)*
@@ -81,7 +85,7 @@ fn impl_proc_macro_error(attr: TokenStream2, input: TokenStream2) -> Result<Toke
     Ok(res.into())
 }
 
-fn gen_body(block: TokenTree, settings: Settings) -> proc_macro2::TokenStream {
+fn gen_body(block: &TokenTree, settings: &Settings) -> proc_macro2::TokenStream {
     let is_proc_macro_hack = settings.is_set(ProcMacroHack);
     let closure = if settings.is_set(AssertUnwindSafe) {
         quote!(::std::panic::AssertUnwindSafe(|| #block ))
