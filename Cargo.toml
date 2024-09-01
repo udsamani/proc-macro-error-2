@@ -4,7 +4,7 @@ authors = [
     "CreepySkeleton <creepy-skeleton@yandex.ru>",
     "GnomedDev <david2005thomas@gmail.com>",
 ]
-version = "1.0.4"
+version = "2.0.0-pre.1"
 description = "Almost drop-in replacement to panics in proc-macros"
 repository = "https://github.com/GnomedDev/proc-macro-error-2"
 rust-version = "1.61"
@@ -16,7 +16,7 @@ edition = "2021"
 [dependencies]
 quote = "1"
 proc-macro2 = "1"
-proc-macro-error-attr2 = { path = "./proc-macro-error-attr", version = "=1.0.4" }
+proc-macro-error-attr2 = { path = "./proc-macro-error-attr", version = "=2.0.0-pre.1" }
 
 [dependencies.syn]
 version = "2"

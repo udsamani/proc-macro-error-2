@@ -1,3 +1,12 @@
+# v2.0.0-pre.1 (2024-09-01)
+
+* __Crate has been renamed to `proc-macro-error2`, due to the old maintainer's inactivity.__
+
+* `syn` has been upgraded to `2`
+* MSRV has been bumped to `1.61`
+* Warnings have been fixed, including `clippy::pedantic` lints
+* CI has been converted to GitHub actions, and testing infrastructure significantly simplified.
+
 # v1.0.4 (2020-7-31)
 
 * `SpanRange` facility is now public.
