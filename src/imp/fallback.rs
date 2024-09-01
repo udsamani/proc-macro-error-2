@@ -26,5 +26,5 @@ pub(crate) fn emit_diagnostic(diag: Diagnostic) {
 }
 
 thread_local! {
-    static ERR_STORAGE: RefCell<Vec<Diagnostic>> = RefCell::new(Vec::new());
+    static ERR_STORAGE: RefCell<Vec<Diagnostic>> = const { RefCell::new(Vec::new()) };
 }

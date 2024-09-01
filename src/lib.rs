@@ -333,7 +333,7 @@ impl SpanRange {
     /// that doesn't lose anything.
     pub fn from_tokens(ts: &dyn ToTokens) -> Self {
         let mut spans = ts.to_token_stream().into_iter().map(|tt| tt.span());
-        let first = spans.next().unwrap_or_else(|| Span::call_site());
+        let first = spans.next().unwrap_or_else(Span::call_site);
         let last = spans.last().unwrap_or(first);
 
         SpanRange { first, last }
@@ -469,11 +469,11 @@ where
 
 fn abort_now() -> ! {
     check_correctness();
-    panic!(AbortNow)
+    std::panic::panic_any(AbortNow)
 }
 
 thread_local! {
-    static ENTERED_ENTRY_POINT: Cell<usize> = Cell::new(0);
+    static ENTERED_ENTRY_POINT: Cell<usize> = const { Cell::new(0) };
 }
 
 struct AbortNow;
@@ -491,8 +491,8 @@ fn check_correctness() {
 #[doc(hidden)]
 pub mod __export {
     // reexports for use in macros
-    pub extern crate proc_macro;
-    pub extern crate proc_macro2;
+    pub use proc_macro;
+    pub use proc_macro2;
 
     use proc_macro2::Span;
     use quote::ToTokens;
@@ -546,8 +546,8 @@ pub mod __export {
     impl SpanAsSpanRange for proc_macro::Span {
         fn FIRST_ARG_MUST_EITHER_BE_Span_OR_IMPLEMENT_ToTokens_OR_BE_SpanRange(&self) -> SpanRange {
             SpanRange {
-                first: self.clone().into(),
-                last: self.clone().into(),
+                first: (*self).into(),
+                last: (*self).into(),
             }
         }
     }

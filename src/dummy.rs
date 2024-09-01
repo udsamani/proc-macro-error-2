@@ -119,7 +119,7 @@ use std::cell::RefCell;
 use crate::check_correctness;
 
 thread_local! {
-    static DUMMY_IMPL: RefCell<Option<TokenStream>> = RefCell::new(None);
+    static DUMMY_IMPL: RefCell<Option<TokenStream>> = const { RefCell::new(None) };
 }
 
 /// Sets dummy token stream which will be appended to `compile_error!(msg);...`

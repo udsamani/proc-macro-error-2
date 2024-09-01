@@ -1,8 +1,6 @@
 //! This is `#[proc_macro_error]` attribute to be used with
 //! [`proc-macro-error`](https://docs.rs/proc-macro-error/). There you go.
 
-extern crate proc_macro;
-
 use crate::parse::parse_input;
 use crate::parse::Attribute;
 use proc_macro::TokenStream;

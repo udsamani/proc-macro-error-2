@@ -1,13 +1,12 @@
-#[macro_use]
-extern crate proc_macro_error;
 extern crate proc_macro;
 
 use proc_macro2::{Span, TokenStream};
 use proc_macro_error::{
-    abort, abort_call_site, diagnostic, emit_call_site_warning, emit_error, emit_warning,
-    proc_macro_error, set_dummy, Diagnostic, Level, OptionExt, ResultExt, SpanRange,
+    abort, abort_call_site, diagnostic, emit_call_site_error, emit_call_site_warning, emit_error,
+    emit_warning, proc_macro_error, set_dummy, Diagnostic, Level, OptionExt, ResultExt, SpanRange,
 };
 
+use quote::quote;
 use syn::{parse_macro_input, spanned::Spanned};
 
 // Macros and Diagnostic
@@ -191,7 +190,7 @@ pub fn dummy(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
         }
     });
 
-    abort!(span, "set_dummy test")
+    abort!(span, "set_dummy test");
 }
 
 #[proc_macro]
@@ -208,7 +207,7 @@ pub fn append_dummy(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
         }
     }));
 
-    abort!(span, "append_dummy test")
+    abort!(span, "append_dummy test");
 }
 
 // Panic

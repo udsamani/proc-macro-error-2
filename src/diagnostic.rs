@@ -10,11 +10,10 @@ use quote::{quote_spanned, ToTokens};
 ///
 /// Warnings are ignored on stable/beta
 #[derive(Debug, PartialEq)]
+#[non_exhaustive]
 pub enum Level {
     Error,
     Warning,
-    #[doc(hidden)]
-    NonExhaustive,
 }
 
 /// Represents a single diagnostic message
@@ -267,7 +266,7 @@ impl ToTokens for Diagnostic {
         ts.extend(
             self.children
                 .iter()
-                .map(|(span_range, msg)| diag_to_tokens(*span_range, &Level::Error, &msg, &[])),
+                .map(|(span_range, msg)| diag_to_tokens(*span_range, &Level::Error, msg, &[])),
         );
     }
 }
