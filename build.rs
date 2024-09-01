@@ -1,4 +1,6 @@
 fn main() {
+    println!("cargo::rustc-check-cfg=cfg(use_fallback)");
+    println!("cargo::rustc-check-cfg=cfg(skip_ui_tests)");
     if !version_check::is_feature_flaggable().unwrap_or(false) {
         println!("cargo:rustc-cfg=use_fallback");
     }
