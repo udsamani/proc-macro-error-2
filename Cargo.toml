@@ -1,5 +1,5 @@
 [package]
-name = "proc-macro-error"
+name = "proc-macro-error2"
 authors = [
     "CreepySkeleton <creepy-skeleton@yandex.ru>",
     "GnomedDev <david2005thomas@gmail.com>",
@@ -22,7 +22,7 @@ targets = ["x86_64-unknown-linux-gnu"]
 [dependencies]
 quote = "1"
 proc-macro2 = "1"
-proc-macro-error-attr = { path = "./proc-macro-error-attr", version = "=1.0.4" }
+proc-macro-error-attr2 = { path = "./proc-macro-error-attr", version = "=1.0.4" }
 
 [dependencies.syn]
 version = "2"

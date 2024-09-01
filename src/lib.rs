@@ -206,7 +206,7 @@
 //! > If you have some type from `proc_macro` or `syn` to point to, do not call `.span()`
 //! > on it but rather use it directly:
 //! > ```no_run
-//! > # use proc_macro_error::abort;
+//! > # use proc_macro_error2::abort;
 //! > # let input = proc_macro2::TokenStream::new();
 //! > let ty: syn::Type = syn::parse2(input).unwrap();
 //! > abort!(ty, "BOOM");
@@ -281,7 +281,7 @@ pub use crate::{
     diagnostic::{Diagnostic, DiagnosticExt, Level},
     dummy::{append_dummy, set_dummy},
 };
-pub use proc_macro_error_attr::proc_macro_error;
+pub use proc_macro_error_attr2::proc_macro_error;
 
 use proc_macro2::Span;
 use quote::{quote, ToTokens};

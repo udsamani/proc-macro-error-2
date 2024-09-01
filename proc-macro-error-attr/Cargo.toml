@@ -1,5 +1,5 @@
 [package]
-name = "proc-macro-error-attr"
+name = "proc-macro-error-attr2"
 version = "1.0.4"
 authors = [
     "CreepySkeleton <creepy-skeleton@yandex.ru>",

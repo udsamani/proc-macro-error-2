@@ -9,7 +9,7 @@
 //!
 //! ```rust,ignore
 //! use proc_macro::TokenStream;
-//! use proc_macro_error::*;
+//! use proc_macro_error2::*;
 //!
 //! trait MyTrait {
 //!     fn do_thing();
@@ -72,7 +72,7 @@
 //!
 //! ```rust,ignore
 //! use proc_macro::TokenStream;
-//! use proc_macro_error::*;
+//! use proc_macro_error2::*;
 //!
 //!  trait MyTrait {
 //!      fn do_thing();

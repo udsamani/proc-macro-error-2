@@ -8,7 +8,7 @@ Migrate from `panic!`-based errors for as little effort as possible!
 
 Also, you can explicitly [append a dummy token stream][crate::dummy] to your errors.
 
-To achieve his, this crate serves as a tiny shim around `proc_macro::Diagnostic` and
+To achieve this, this crate serves as a tiny shim around `proc_macro::Diagnostic` and
 `compile_error!`. It detects the most preferable way to emit errors based on compiler's version.
 When the underlying diagnostic type is finally stabilized, this crate will be simply
 delegating to it, requiring no changes in your code!
@@ -18,7 +18,7 @@ available on stable ahead of time and your error-reporting code future-proof.
 
 ```toml
 [dependencies]
-proc-macro-error = "1.0"
+proc-macro-error2 = "2.0"
 ```
 
 *Supports rustc 1.31 and up*
@@ -64,7 +64,7 @@ And this is what your users will see in their IDE:
 ### Panic-like usage
 
 ```rust
-use proc_macro_error::{
+use proc_macro_error2::{
     proc_macro_error,
     abort,
     abort_call_site,
@@ -111,7 +111,7 @@ pub fn make_answer(input: TokenStream) -> TokenStream {
 ### `proc_macro::Diagnostic`-like usage
 
 ```rust
-use proc_macro_error::*;
+use proc_macro_error2::*;
 use proc_macro::TokenStream;
 use syn::{spanned::Spanned, DeriveInput, ItemStruct, Fields, Attribute , parse_macro_input};
 use quote::quote;

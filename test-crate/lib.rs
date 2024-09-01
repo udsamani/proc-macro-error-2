@@ -1,5 +1,5 @@
 use proc_macro2::{Span, TokenStream};
-use proc_macro_error::{
+use proc_macro_error2::{
     abort, abort_call_site, diagnostic, emit_call_site_error, emit_call_site_warning, emit_error,
     emit_warning, proc_macro_error, set_dummy, Diagnostic, Level, OptionExt, ResultExt, SpanRange,
 };
@@ -199,7 +199,7 @@ pub fn append_dummy(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
         impl Default for NeedDefault
     });
 
-    proc_macro_error::append_dummy(quote!({
+    proc_macro_error2::append_dummy(quote!({
         fn default() -> Self {
             NeedDefault::A
         }

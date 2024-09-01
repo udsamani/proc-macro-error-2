@@ -1,4 +1,4 @@
-use proc_macro_error::*;
+use proc_macro_error2::*;
 
 #[test]
 #[should_panic = "proc-macro-error API cannot be used outside of"]
