@@ -1,7 +1,10 @@
 [package]
 name = "test-crate"
 version = "0.0.0"
-authors = ["CreepySkeleton <creepy-skeleton@yandex.ru>"]
+authors = [
+    "CreepySkeleton <creepy-skeleton@yandex.ru>",
+    "GnomedDev <david2005thomas@gmail.com>",
+]
 edition = "2021"
 publish = false
 

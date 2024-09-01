@@ -1,9 +1,12 @@
 [package]
 name = "proc-macro-error"
+authors = [
+    "CreepySkeleton <creepy-skeleton@yandex.ru>",
+    "GnomedDev <david2005thomas@gmail.com>",
+]
 version = "1.0.4"
-authors = ["CreepySkeleton <creepy-skeleton@yandex.ru>"]
 description = "Almost drop-in replacement to panics in proc-macros"
-repository = "https://gitlab.com/CreepySkeleton/proc-macro-error"
+repository = "https://github.com/GnomedDev/proc-macro-error-2"
 rust-version = "1.70"
 keywords = ["proc-macro", "error", "errors"]
 categories = ["development-tools::procedural-macro-helpers"]
