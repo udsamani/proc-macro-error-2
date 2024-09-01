@@ -21,7 +21,7 @@ available on stable ahead of time and your error-reporting code future-proof.
 proc-macro-error2 = "2.0"
 ```
 
-*Supports rustc 1.31 and up*
+*Supports rustc 1.61 and up*
 
 [Documentation and guide][guide]
 
@@ -170,16 +170,9 @@ pub fn make_answer(input: TokenStream) -> TokenStream {
 
 ## MSRV policy
 
-`proc_macro_error` will always be compatible with proc-macro Holy Trinity:
-`proc_macro2`, `syn`, `quote` crates. In other words, if the Trinity is available
-to you - `proc_macro_error` is available too.
+The MSRV is currently `1.61`, and this is considered a breaking change to increase.
 
-> **Important!**
->
-> If you want to use `#[proc_macro_error]` with `synstructure`, you're going
-> to have to put the attribute inside the `decl_derive!` invocation. Unfortunately,
-> due to some bug in pre-1.34 rustc, putting proc-macro attributes inside macro
-> invocations doesn't work, so your MSRV is effectively 1.34.
+However, if an existing dependency requires a higher MSRV without a semver breaking update, this may be raised.
 
 ## Motivation
 
