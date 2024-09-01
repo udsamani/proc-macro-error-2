@@ -1,5 +1,3 @@
-extern crate test_crate;
-
 use test_crate::*;
 
 ok!(it_works);

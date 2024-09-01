@@ -1,5 +1,3 @@
-extern crate proc_macro;
-
 use proc_macro2::{Span, TokenStream};
 use proc_macro_error::{
     abort, abort_call_site, diagnostic, emit_call_site_error, emit_call_site_warning, emit_error,

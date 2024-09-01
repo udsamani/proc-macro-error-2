@@ -1,5 +1,3 @@
-extern crate trybuild;
-
 #[cfg_attr(skip_ui_tests, ignore)]
 #[test]
 fn ui() {

@@ -292,12 +292,13 @@ impl From<syn::Error> for Diagnostic {
         use proc_macro2::{Delimiter, TokenTree};
 
         fn gut_error(ts: &mut impl Iterator<Item = TokenTree>) -> Option<(SpanRange, String)> {
-            let first = match ts.next() {
-                // compile_error
-                None => return None,
-                Some(tt) => tt.span(),
-            };
-            ts.next().unwrap(); // !
+            let start_span = ts.next()?.span();
+            ts.next().expect(":1");
+            ts.next().expect("core");
+            ts.next().expect(":2");
+            ts.next().expect(":3");
+            ts.next().expect("compile_error");
+            ts.next().expect("!");
 
             let lit = match ts.next().unwrap() {
                 TokenTree::Group(group) => {
@@ -318,10 +319,10 @@ impl From<syn::Error> for Diagnostic {
 
                     match group.stream().into_iter().next().unwrap() {
                         TokenTree::Literal(lit) => lit,
-                        _ => unreachable!(),
+                        _ => unreachable!(""),
                     }
                 }
-                _ => unreachable!(),
+                _ => unreachable!(""),
             };
 
             let last = lit.span();
@@ -331,7 +332,13 @@ impl From<syn::Error> for Diagnostic {
             msg.pop();
             msg.remove(0);
 
-            Some((SpanRange { first, last }, msg))
+            Some((
+                SpanRange {
+                    first: start_span,
+                    last,
+                },
+                msg,
+            ))
         }
 
         let mut ts = err.to_compile_error().into_iter();

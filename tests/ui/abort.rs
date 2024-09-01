@@ -1,4 +1,3 @@
-extern crate test_crate;
 use test_crate::*;
 
 abort_from!(one, two);

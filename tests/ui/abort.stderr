@@ -1,25 +1,25 @@
 error: abort!(span, from) test
- --> tests/ui/abort.rs:4:13
+ --> tests/ui/abort.rs:3:13
   |
-4 | abort_from!(one, two);
+3 | abort_from!(one, two);
   |             ^^^
 
 error: abort!(span, single_expr) test
- --> tests/ui/abort.rs:5:18
+ --> tests/ui/abort.rs:4:18
   |
-5 | abort_to_string!(one, two);
+4 | abort_to_string!(one, two);
   |                  ^^^
 
 error: abort!(span, expr1, expr2) test
- --> tests/ui/abort.rs:6:15
+ --> tests/ui/abort.rs:5:15
   |
-6 | abort_format!(one, two);
+5 | abort_format!(one, two);
   |               ^^^
 
 error: Diagnostic::abort() test
- --> tests/ui/abort.rs:7:15
+ --> tests/ui/abort.rs:6:15
   |
-7 | direct_abort!(one, two);
+6 | direct_abort!(one, two);
   |               ^^^
 
 error: This is an error
@@ -34,15 +34,15 @@ error: This is an error
          = note: spanned format note
          = note: Some note
 
- --> tests/ui/abort.rs:8:14
+ --> tests/ui/abort.rs:7:14
   |
-8 | abort_notes!(one, two);
+7 | abort_notes!(one, two);
   |              ^^^
 
 error: abort_call_site! test
- --> tests/ui/abort.rs:9:1
+ --> tests/ui/abort.rs:8:1
   |
-9 | abort_call_site_test!(one, two);
+8 | abort_call_site_test!(one, two);
   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   |
   = note: this error originates in the macro `abort_call_site_test` (in Nightly builds, run with -Z macro-backtrace for more info)

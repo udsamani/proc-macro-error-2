@@ -1,9 +1,8 @@
-extern crate test_crate;
 use test_crate::*;
 
 enum NeedDefault {
     A,
-    B
+    B,
 }
 
 append_dummy!(need_default);

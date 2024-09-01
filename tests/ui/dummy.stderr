@@ -1,5 +1,5 @@
 error: set_dummy test
- --> tests/ui/dummy.rs:9:8
+ --> tests/ui/dummy.rs:8:8
   |
-9 | dummy!(need_default);
+8 | dummy!(need_default);
   |        ^^^^^^^^^^^^
