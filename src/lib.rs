@@ -21,7 +21,7 @@
 //!
 //! ```toml
 //! [dependencies]
-//! proc-macro-error2 = { version = "2.0.0-pre.1", default-features = false }
+//! proc-macro-error2 = { version = "2.0.0", default-features = false }
 //! ```
 //!
 //! ***Please note that disabling this feature makes sense only if you don't depend on `syn`

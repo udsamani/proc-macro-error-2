@@ -1,3 +1,7 @@
+# v2.0.0 (2024-09-05)
+
+No changes, simply releasing pre-release as full release.
+
 # v2.0.0-pre.1 (2024-09-01)
 
 * __Crate has been renamed to `proc-macro-error2`, due to the old maintainer's inactivity.__
