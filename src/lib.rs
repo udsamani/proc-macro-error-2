@@ -470,7 +470,7 @@ where
 
 fn abort_now() -> ! {
     check_correctness();
-    std::panic::panic_any(AbortNow)
+    panic!();
 }
 
 thread_local! {
